@@ -1,0 +1,54 @@
+<html style="width:100%;height:100%;">
+<head>
+<meta charset="utf-8">
+<title>共通鍵暗号</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+ 
+<script type="text/javascript">
+//暗号・復号テスト
+function crypto1() {//暗号化
+		let src=document.getElementById("原文").value
+		let key=document.getElementById("key1").value;
+    var des = "";
+    des = CryptoJS.AES.encrypt(src, key);
+    document.getElementById("暗号").value=des;
+    
+}
+function crypto2() {//復号化
+		let src=document.getElementById("暗号").value
+		let key=document.getElementById("key2").value;
+    var des = "";
+    var decrypted = CryptoJS.AES.decrypt(src, key);
+    des = decrypted.toString(CryptoJS.enc.Utf8);
+    document.getElementById("原文").value=des;
+}
+</script>
+</head>
+<body style="width:100%;height:100%;">
+<div style="display:flex;">
+<div style="display:inline-block;padding:10px;">
+<h2>
+原文
+</h2>
+<textarea style="height:100px;width:100%;" id="原文">
+</textarea><br>
+鍵
+<input type="text" id="key1">
+<br>
+<input type="button" onclick="crypto1();" value="暗号化">
+</div>
+<div style="display:inline-block;padding:10px;">
+<h2>
+暗号化後
+</h2>
+<textarea style="height:100px;width:100%;" id="暗号">
+</textarea><br>
+鍵
+<input type="text" id="key2">
+<br>
+<input type="button" onclick="crypto2();" value="復号化">
+</div>
+</div>
+</body>
+</html>
