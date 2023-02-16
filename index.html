@@ -9,7 +9,7 @@
 //暗号・復号テスト
 function crypto1() {//暗号化
 		let src=document.getElementById("原文").value
-		let key=document.getElementById("key1").value;
+		let key=document.getElementById("key").value;
     var des = "";
     des = CryptoJS.AES.encrypt(src, key);
     document.getElementById("暗号").value=des;
@@ -17,7 +17,7 @@ function crypto1() {//暗号化
 }
 function crypto2() {//復号化
 		let src=document.getElementById("暗号").value
-		let key=document.getElementById("key2").value;
+		let key=document.getElementById("key").value;
     var des = "";
     var decrypted = CryptoJS.AES.decrypt(src, key);
     des = decrypted.toString(CryptoJS.enc.Utf8);
@@ -33,9 +33,6 @@ function crypto2() {//復号化
 </h2>
 <textarea style="height:70%;width:100%;" id="原文">
 </textarea><br>
-鍵
-<input type="text" id="key1">
-<br>
 <input type="button" onclick="crypto1();" value="暗号化">
 </div>
 <div style="width:50%;padding:10px;height:100%;">
@@ -43,12 +40,14 @@ function crypto2() {//復号化
 暗号化後
 </h2>
 <textarea style="height:70%;width:100%;" id="暗号">
-</textarea><br>
-鍵
-<input type="text" id="key2">
+</textarea>
 <br>
 <input type="button" onclick="crypto2();" value="復号化">
 </div>
 </div>
+<p style="text-align:center;">
+鍵
+<input type="text" id="key">
+</p>
 </body>
 </html>
